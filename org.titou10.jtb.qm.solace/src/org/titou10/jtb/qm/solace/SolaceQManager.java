@@ -67,7 +67,7 @@ public class SolaceQManager extends QManager {
    @Override
    public Connection connect(SessionDef sessionDef, boolean showSystemObjects, String clientID) throws Exception {
 
-      String jndiProviderURL = "smf://oc-node2.denis.prive:55555";
+      String jndiProviderURL = "tcp://vmr-mr8v6yiwia8l.messaging.solace.cloud:20320";
       String cfJNDIName = "/jms/cf/default";
 
       Hashtable<String, Object> env = new Hashtable<>();
@@ -77,6 +77,7 @@ public class SolaceQManager extends QManager {
       env.put(Context.SECURITY_CREDENTIALS, sessionDef.getActivePassword());
       // env.put(Context.SECURITY_PRINCIPAL, "default");
       // env.put(Context.SECURITY_CREDENTIALS, "default");
+      env.put(SupportedProperty.SOLACE_JMS_VPN, "msgvpn-8mqb134z97");
 
       env.put(SupportedProperty.SOLACE_JMS_SSL_VALIDATE_CERTIFICATE, false);
 
